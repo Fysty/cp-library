@@ -36,7 +36,7 @@ public:
     0 <= a[i] < mod
     a.size() must be a power of 2
     */
-    static void ntt(vector<T> &a, bool inv = false) { //0 <= a[i] < P
+    static void ntt(vector<T> &a, bool inv = false) {
         int n = a.size();
         assert((n & (n - 1)) == 0);
         ensure_root_table_size(n);
