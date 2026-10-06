@@ -7,7 +7,7 @@ using mint = modint998244353;
 
 int main()
 {
-    std::ios::sync_with_stdio(0), std::cin.tie(0);
+    MottoHayaku
     int n;
     cin >> n;
     vector<mint> a(n);
