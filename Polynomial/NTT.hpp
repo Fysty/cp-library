@@ -37,7 +37,7 @@ public:
     a.size() must be a power of 2
     */
     static void ntt(vector<T> &a, bool inv = false) {
-        int n = a.size();
+        int n = (int)a.size();
         assert((n & (n - 1)) == 0);
         ensure_root_table_size(n);
         for (int i = 0, j = 1; j < n - 1; ++j) {
@@ -60,18 +60,5 @@ public:
     }
     static size_t maxsize() {
         return max_size;
-    }
-    static vector<T> convolution(vector<T> a, vector<T> b) {
-        if (a.empty() || b.empty()) return vector<T>();
-        int n = 1, sz = int(a.size()) + int(b.size()) - 1;
-        while (n < sz) n <<= 1;
-        assert(n <= ntt_max_limit && "the result length exceeds the support limit of the modulo");
-        a.resize(n), b.resize(n);
-        ntt(a), ntt(b);
-        for (int i = 0; i < n; ++i)
-            a[i] = a[i] * b[i];
-        ntt(a, true);
-        a.resize(sz);
-        return a;
     }
 };
