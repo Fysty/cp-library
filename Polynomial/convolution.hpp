@@ -3,7 +3,6 @@
 #include "Polynomial/NTT.hpp"
 
 template<typename T>
-requires std::derived_from<T, internal::modint_base>
 vector<T> convolution(vector<T> a, vector<T> b) {
     if (a.empty() || b.empty()) return vector<T>();
     int n = 1, sz = int(a.size()) + int(b.size()) - 1;

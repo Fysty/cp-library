@@ -7,6 +7,7 @@ using mint=modint998244353;
 
 int main()
 {
+    MottoHayaku
     int n, m;
     cin >> n >> m;
     vector<mint> a(n), b(m);
