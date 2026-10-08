@@ -2,8 +2,8 @@
 
 #include "Polynomial/convolution.hpp"
 
-template<typename T>
-vector<T> fps_inv(vector<T> F) {
+template <typename T>
+vector<T> fps_inv(const vector<T>& F) {
     assert(!F.empty() && F[0] != 0);
     int n = (int)F.size();
     vector<T> G = {F[0].inv()};
