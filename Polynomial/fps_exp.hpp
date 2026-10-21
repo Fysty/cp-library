@@ -6,6 +6,7 @@ template <typename T>
 vector<T> fps_exp(const vector<T>& F) {
     int n = (int)F.size();
     assert(n > 0 && F[0] == 0);
+    assert((int)bit_ceil((unsigned)n) <= NTT<T>::ntt_max_limit && "the result length exceeds the support limit of the modulo");
     vector<T> G = {1}, H = {1};
     G.reserve(n), H.reserve(n);
     int sz = 1;
