@@ -4,7 +4,7 @@
 
 // [x^k](f(x)/g(x)), [x^0]g != 0
 template<typename T>
-T bostan_mori(vector<T> f, vector<T> g, long long k) {
+T bostan_mori(const vector<T> &f, const vector<T> &g, long long k) {
     assert(f.size() + 1 <= g.size() && g[0] != 0);
     if (f.empty()) return T(0);
     vector<T> F = f, G = g;

@@ -26,7 +26,7 @@ vector<T> multipoint_eval(const vector<T>& f, const vector<T>& x) {
     q.resize(n);
     vector<T> a = f;
     a.resize(n + m - 1);
-    vector<T> u = middle_product(a, fps_inv(q));
+    vector<T> root = middle_product(a, fps_inv(q));
 
     // transpose of N = N_L Q_R + N_R Q_L, going top-down
     vector<T> res(m);
@@ -39,6 +39,6 @@ vector<T> multipoint_eval(const vector<T>& f, const vector<T>& x) {
         self(self, 2 * k, l, mid, middle_product(u, Q[2 * k + 1]));
         self(self, 2 * k + 1, mid, r, middle_product(u, Q[2 * k]));
     };
-    down(down, 1, 0, m, u);
+    down(down, 1, 0, m, root);
     return res;
 }
