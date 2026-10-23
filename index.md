@@ -30,6 +30,9 @@ data:
       path: Polynomial/bostan_mori.hpp
       title: Polynomial/bostan_mori.hpp
     - icon: ':heavy_check_mark:'
+      path: Polynomial/chirp_z.hpp
+      title: Polynomial/chirp_z.hpp
+    - icon: ':heavy_check_mark:'
       path: Polynomial/convolution.hpp
       title: Polynomial/convolution.hpp
     - icon: ':heavy_check_mark:'
@@ -85,6 +88,9 @@ data:
     - icon: ':heavy_check_mark:'
       path: test/library_checker/multipoint_evaluation.test.cpp
       title: test/library_checker/multipoint_evaluation.test.cpp
+    - icon: ':heavy_check_mark:'
+      path: test/library_checker/multipoint_evaluation_on_geometric_sequence.test.cpp
+      title: test/library_checker/multipoint_evaluation_on_geometric_sequence.test.cpp
     - icon: ':heavy_check_mark:'
       path: test/library_checker/polynomial_interpolation.test.cpp
       title: test/library_checker/polynomial_interpolation.test.cpp

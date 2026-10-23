@@ -15,6 +15,9 @@ data:
     title: Polynomial/NTT.hpp
   _extendedRequiredBy:
   - icon: ':heavy_check_mark:'
+    path: Polynomial/chirp_z.hpp
+    title: Polynomial/chirp_z.hpp
+  - icon: ':heavy_check_mark:'
     path: Polynomial/interpolate.hpp
     title: Polynomial/interpolate.hpp
   - icon: ':heavy_check_mark:'
@@ -24,6 +27,9 @@ data:
   - icon: ':heavy_check_mark:'
     path: test/library_checker/multipoint_evaluation.test.cpp
     title: test/library_checker/multipoint_evaluation.test.cpp
+  - icon: ':heavy_check_mark:'
+    path: test/library_checker/multipoint_evaluation_on_geometric_sequence.test.cpp
+    title: test/library_checker/multipoint_evaluation_on_geometric_sequence.test.cpp
   - icon: ':heavy_check_mark:'
     path: test/library_checker/polynomial_interpolation.test.cpp
     title: test/library_checker/polynomial_interpolation.test.cpp
@@ -209,11 +215,13 @@ data:
   requiredBy:
   - Polynomial/multipoint.hpp
   - Polynomial/interpolate.hpp
+  - Polynomial/chirp_z.hpp
   timestamp: '2026-10-21 14:58:37+08:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
   - test/library_checker/multipoint_evaluation.test.cpp
   - test/library_checker/polynomial_interpolation.test.cpp
+  - test/library_checker/multipoint_evaluation_on_geometric_sequence.test.cpp
 documentation_of: Polynomial/middle_product.hpp
 layout: document
 redirect_from:

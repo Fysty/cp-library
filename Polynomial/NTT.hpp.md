@@ -15,6 +15,9 @@ data:
     path: Polynomial/bostan_mori.hpp
     title: Polynomial/bostan_mori.hpp
   - icon: ':heavy_check_mark:'
+    path: Polynomial/chirp_z.hpp
+    title: Polynomial/chirp_z.hpp
+  - icon: ':heavy_check_mark:'
     path: Polynomial/convolution.hpp
     title: Polynomial/convolution.hpp
   - icon: ':heavy_check_mark:'
@@ -63,6 +66,9 @@ data:
   - icon: ':heavy_check_mark:'
     path: test/library_checker/multipoint_evaluation.test.cpp
     title: test/library_checker/multipoint_evaluation.test.cpp
+  - icon: ':heavy_check_mark:'
+    path: test/library_checker/multipoint_evaluation_on_geometric_sequence.test.cpp
+    title: test/library_checker/multipoint_evaluation_on_geometric_sequence.test.cpp
   - icon: ':heavy_check_mark:'
     path: test/library_checker/polynomial_interpolation.test.cpp
     title: test/library_checker/polynomial_interpolation.test.cpp
@@ -261,6 +267,7 @@ data:
   - Polynomial/bostan_mori.hpp
   - Polynomial/middle_product.hpp
   - Polynomial/fps_log.hpp
+  - Polynomial/chirp_z.hpp
   - Polynomial/fps_pow.hpp
   - Polynomial/product_of_polynomials.hpp
   timestamp: '2026-10-06 15:13:07+08:00'
@@ -273,6 +280,7 @@ data:
   - test/library_checker/polynomial_interpolation.test.cpp
   - test/library_checker/fps_inv.test.cpp
   - test/library_checker/convolution.test.cpp
+  - test/library_checker/multipoint_evaluation_on_geometric_sequence.test.cpp
   - test/library_checker/kth_term_of_linearly_recurrent_sequence.test.cpp
   - test/library_checker/fps_exp.test.cpp
 documentation_of: Polynomial/NTT.hpp
