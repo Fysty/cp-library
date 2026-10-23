@@ -3,7 +3,6 @@
 #include "Polynomial/multipoint.hpp"
 
 // x[i] pairwise distinct, returns f with deg f < n and f(x[i]) = y[i]
-// f = \sum_i y[i] / M'(x[i]) * M(x) / (x - x[i]), M(x) = \prod_i (x - x[i])
 template<typename T>
 vector<T> polynomial_interpolation(const vector<T>& x, const vector<T>& y) {
     assert(x.size() == y.size());
