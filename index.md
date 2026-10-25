@@ -35,7 +35,7 @@ data:
     - icon: ':heavy_check_mark:'
       path: Polynomial/convolution.hpp
       title: Polynomial/convolution.hpp
-    - icon: ':warning:'
+    - icon: ':heavy_check_mark:'
       path: Polynomial/divmod.hpp
       title: Polynomial/divmod.hpp
     - icon: ':heavy_check_mark:'
@@ -50,6 +50,9 @@ data:
     - icon: ':heavy_check_mark:'
       path: Polynomial/fps_pow.hpp
       title: Polynomial/fps_pow.hpp
+    - icon: ':heavy_check_mark:'
+      path: Polynomial/helper.hpp
+      title: Polynomial/helper.hpp
     - icon: ':heavy_check_mark:'
       path: Polynomial/interpolate.hpp
       title: Polynomial/interpolate.hpp
@@ -73,7 +76,7 @@ data:
     - icon: ':heavy_check_mark:'
       path: test/library_checker/convolution.test.cpp
       title: test/library_checker/convolution.test.cpp
-    - icon: ':x:'
+    - icon: ':heavy_check_mark:'
       path: test/library_checker/division_of_polynomials.test.cpp
       title: test/library_checker/division_of_polynomials.test.cpp
     - icon: ':heavy_check_mark:'

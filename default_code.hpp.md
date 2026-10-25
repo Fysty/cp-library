@@ -7,6 +7,9 @@ data:
     path: test/library_checker/convolution.test.cpp
     title: test/library_checker/convolution.test.cpp
   - icon: ':heavy_check_mark:'
+    path: test/library_checker/division_of_polynomials.test.cpp
+    title: test/library_checker/division_of_polynomials.test.cpp
+  - icon: ':heavy_check_mark:'
     path: test/library_checker/fps_exp.test.cpp
     title: test/library_checker/fps_exp.test.cpp
   - icon: ':heavy_check_mark:'
@@ -106,6 +109,7 @@ data:
   - test/library_checker/convolution.test.cpp
   - test/library_checker/multipoint_evaluation_on_geometric_sequence.test.cpp
   - test/library_checker/kth_term_of_linearly_recurrent_sequence.test.cpp
+  - test/library_checker/division_of_polynomials.test.cpp
   - test/library_checker/fps_exp.test.cpp
 documentation_of: default_code.hpp
 layout: document

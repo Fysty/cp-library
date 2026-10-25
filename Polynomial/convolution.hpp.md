@@ -18,6 +18,9 @@ data:
     path: Polynomial/bostan_mori.hpp
     title: Polynomial/bostan_mori.hpp
   - icon: ':heavy_check_mark:'
+    path: Polynomial/divmod.hpp
+    title: Polynomial/divmod.hpp
+  - icon: ':heavy_check_mark:'
     path: Polynomial/fps_exp.hpp
     title: Polynomial/fps_exp.hpp
   - icon: ':heavy_check_mark:'
@@ -42,6 +45,9 @@ data:
   - icon: ':heavy_check_mark:'
     path: test/library_checker/convolution.test.cpp
     title: test/library_checker/convolution.test.cpp
+  - icon: ':heavy_check_mark:'
+    path: test/library_checker/division_of_polynomials.test.cpp
+    title: test/library_checker/division_of_polynomials.test.cpp
   - icon: ':heavy_check_mark:'
     path: test/library_checker/fps_exp.test.cpp
     title: test/library_checker/fps_exp.test.cpp
@@ -243,6 +249,7 @@ data:
   - Polynomial/multipoint.hpp
   - Polynomial/fps_exp.hpp
   - Polynomial/interpolate.hpp
+  - Polynomial/divmod.hpp
   - Polynomial/fps_inv.hpp
   - Polynomial/bostan_mori.hpp
   - Polynomial/fps_log.hpp
@@ -259,6 +266,7 @@ data:
   - test/library_checker/fps_inv.test.cpp
   - test/library_checker/convolution.test.cpp
   - test/library_checker/kth_term_of_linearly_recurrent_sequence.test.cpp
+  - test/library_checker/division_of_polynomials.test.cpp
   - test/library_checker/fps_exp.test.cpp
 documentation_of: Polynomial/convolution.hpp
 layout: document

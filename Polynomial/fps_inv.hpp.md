@@ -18,6 +18,9 @@ data:
     title: Polynomial/convolution.hpp
   _extendedRequiredBy:
   - icon: ':heavy_check_mark:'
+    path: Polynomial/divmod.hpp
+    title: Polynomial/divmod.hpp
+  - icon: ':heavy_check_mark:'
     path: Polynomial/fps_exp.hpp
     title: Polynomial/fps_exp.hpp
   - icon: ':heavy_check_mark:'
@@ -33,6 +36,9 @@ data:
     path: Polynomial/multipoint.hpp
     title: Polynomial/multipoint.hpp
   _extendedVerifiedWith:
+  - icon: ':heavy_check_mark:'
+    path: test/library_checker/division_of_polynomials.test.cpp
+    title: test/library_checker/division_of_polynomials.test.cpp
   - icon: ':heavy_check_mark:'
     path: test/library_checker/fps_exp.test.cpp
     title: test/library_checker/fps_exp.test.cpp
@@ -247,6 +253,7 @@ data:
   - Polynomial/multipoint.hpp
   - Polynomial/fps_exp.hpp
   - Polynomial/interpolate.hpp
+  - Polynomial/divmod.hpp
   - Polynomial/fps_log.hpp
   - Polynomial/fps_pow.hpp
   timestamp: '2026-10-21 14:58:37+08:00'
@@ -257,6 +264,7 @@ data:
   - test/library_checker/fps_pow.test.cpp
   - test/library_checker/polynomial_interpolation.test.cpp
   - test/library_checker/fps_inv.test.cpp
+  - test/library_checker/division_of_polynomials.test.cpp
   - test/library_checker/fps_exp.test.cpp
 documentation_of: Polynomial/fps_inv.hpp
 layout: document
