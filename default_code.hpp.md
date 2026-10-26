@@ -4,6 +4,12 @@ data:
   _extendedRequiredBy: []
   _extendedVerifiedWith:
   - icon: ':heavy_check_mark:'
+    path: test/library_checker/composition_of_formal_power_series.test.cpp
+    title: test/library_checker/composition_of_formal_power_series.test.cpp
+  - icon: ':heavy_check_mark:'
+    path: test/library_checker/composition_of_formal_power_series_large.test.cpp
+    title: test/library_checker/composition_of_formal_power_series_large.test.cpp
+  - icon: ':heavy_check_mark:'
     path: test/library_checker/compositional_inverse_of_formal_power_series.test.cpp
     title: test/library_checker/compositional_inverse_of_formal_power_series.test.cpp
   - icon: ':heavy_check_mark:'
@@ -112,9 +118,11 @@ data:
   - test/library_checker/multipoint_evaluation.test.cpp
   - test/library_checker/fps_pow.test.cpp
   - test/library_checker/compositional_inverse_of_formal_power_series_large.test.cpp
+  - test/library_checker/composition_of_formal_power_series.test.cpp
   - test/library_checker/polynomial_interpolation.test.cpp
   - test/library_checker/fps_inv.test.cpp
   - test/library_checker/convolution.test.cpp
+  - test/library_checker/composition_of_formal_power_series_large.test.cpp
   - test/library_checker/multipoint_evaluation_on_geometric_sequence.test.cpp
   - test/library_checker/kth_term_of_linearly_recurrent_sequence.test.cpp
   - test/library_checker/division_of_polynomials.test.cpp

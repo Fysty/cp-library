@@ -33,6 +33,9 @@ data:
       path: Polynomial/chirp_z.hpp
       title: Polynomial/chirp_z.hpp
     - icon: ':heavy_check_mark:'
+      path: Polynomial/composition.hpp
+      title: Polynomial/composition.hpp
+    - icon: ':heavy_check_mark:'
       path: Polynomial/compositional_inverse.hpp
       title: Polynomial/compositional_inverse.hpp
     - icon: ':heavy_check_mark:'
@@ -79,6 +82,12 @@ data:
   verificationCategories:
   - name: test/library_checker
     pages:
+    - icon: ':heavy_check_mark:'
+      path: test/library_checker/composition_of_formal_power_series.test.cpp
+      title: test/library_checker/composition_of_formal_power_series.test.cpp
+    - icon: ':heavy_check_mark:'
+      path: test/library_checker/composition_of_formal_power_series_large.test.cpp
+      title: test/library_checker/composition_of_formal_power_series_large.test.cpp
     - icon: ':heavy_check_mark:'
       path: test/library_checker/compositional_inverse_of_formal_power_series.test.cpp
       title: test/library_checker/compositional_inverse_of_formal_power_series.test.cpp

@@ -18,6 +18,9 @@ data:
     path: Polynomial/chirp_z.hpp
     title: Polynomial/chirp_z.hpp
   - icon: ':heavy_check_mark:'
+    path: Polynomial/composition.hpp
+    title: Polynomial/composition.hpp
+  - icon: ':heavy_check_mark:'
     path: Polynomial/compositional_inverse.hpp
     title: Polynomial/compositional_inverse.hpp
   - icon: ':heavy_check_mark:'
@@ -54,6 +57,12 @@ data:
     path: Polynomial/product_of_polynomials.hpp
     title: Polynomial/product_of_polynomials.hpp
   _extendedVerifiedWith:
+  - icon: ':heavy_check_mark:'
+    path: test/library_checker/composition_of_formal_power_series.test.cpp
+    title: test/library_checker/composition_of_formal_power_series.test.cpp
+  - icon: ':heavy_check_mark:'
+    path: test/library_checker/composition_of_formal_power_series_large.test.cpp
+    title: test/library_checker/composition_of_formal_power_series_large.test.cpp
   - icon: ':heavy_check_mark:'
     path: test/library_checker/compositional_inverse_of_formal_power_series.test.cpp
     title: test/library_checker/compositional_inverse_of_formal_power_series.test.cpp
@@ -286,6 +295,7 @@ data:
   - Polynomial/fps_inv.hpp
   - Polynomial/bostan_mori.hpp
   - Polynomial/power_projection.hpp
+  - Polynomial/composition.hpp
   - Polynomial/middle_product.hpp
   - Polynomial/fps_log.hpp
   - Polynomial/chirp_z.hpp
@@ -300,9 +310,11 @@ data:
   - test/library_checker/multipoint_evaluation.test.cpp
   - test/library_checker/fps_pow.test.cpp
   - test/library_checker/compositional_inverse_of_formal_power_series_large.test.cpp
+  - test/library_checker/composition_of_formal_power_series.test.cpp
   - test/library_checker/polynomial_interpolation.test.cpp
   - test/library_checker/fps_inv.test.cpp
   - test/library_checker/convolution.test.cpp
+  - test/library_checker/composition_of_formal_power_series_large.test.cpp
   - test/library_checker/multipoint_evaluation_on_geometric_sequence.test.cpp
   - test/library_checker/kth_term_of_linearly_recurrent_sequence.test.cpp
   - test/library_checker/division_of_polynomials.test.cpp
