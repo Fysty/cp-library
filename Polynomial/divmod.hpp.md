@@ -22,11 +22,17 @@ data:
   - icon: ':heavy_check_mark:'
     path: Polynomial/helper.hpp
     title: Polynomial/helper.hpp
-  _extendedRequiredBy: []
+  _extendedRequiredBy:
+  - icon: ':heavy_check_mark:'
+    path: Polynomial/bostan_mori.hpp
+    title: Polynomial/bostan_mori.hpp
   _extendedVerifiedWith:
   - icon: ':heavy_check_mark:'
     path: test/library_checker/division_of_polynomials.test.cpp
     title: test/library_checker/division_of_polynomials.test.cpp
+  - icon: ':heavy_check_mark:'
+    path: test/library_checker/kth_term_of_linearly_recurrent_sequence.test.cpp
+    title: test/library_checker/kth_term_of_linearly_recurrent_sequence.test.cpp
   _isVerificationFailed: false
   _pathExtension: hpp
   _verificationStatusIcon: ':heavy_check_mark:'
@@ -206,23 +212,23 @@ data:
     \ a / x^k, dropping the lowest k coefficients\ntemplate<typename T>\nvector<T>\
     \ poly_shr(const vector<T>& a, int k) {\n    if (SZ(a) <= k) return vector<T>();\n\
     \    return vector<T>(a.begin() + k, a.end());\n}\n#line 5 \"Polynomial/divmod.hpp\"\
-    \n\n// returns {q, r} with f = q g + r, deg r < deg g, both trimmed\ntemplate<typename\
-    \ T>\npair<vector<T>, vector<T>> poly_divmod(vector<T> f, vector<T> g) {\n   \
-    \ poly_trim(f), poly_trim(g);\n    assert(!g.empty());\n    int n = SZ(f), m =\
-    \ SZ(g);\n    if (n < m) return {vector<T>(), f};\n    // rev(q) = rev(f) / rev(g)\
-    \ mod x^(n - m + 1)\n    int k = n - m + 1;\n    vector<T> rf(f.rbegin(), f.rbegin()\
-    \ + k), rg(g.rbegin(), g.rend());\n    rg.resize(k);\n    vector<T> q = convolution(rf,\
+    \n\n// returns {q, r} with f = q g + r, deg r < deg g\ntemplate<typename T>\n\
+    pair<vector<T>, vector<T>> poly_divmod(vector<T> f, vector<T> g) {\n    poly_trim(f),\
+    \ poly_trim(g);\n    assert(!g.empty());\n    int n = SZ(f), m = SZ(g);\n    if\
+    \ (n < m) return {vector<T>(), f};\n    // rev(q) = rev(f) / rev(g) mod x^(n -\
+    \ m + 1)\n    int k = n - m + 1;\n    vector<T> rf(f.rbegin(), f.rbegin() + k),\
+    \ rg(g.rbegin(), g.rend());\n    rg.resize(k);\n    vector<T> q = convolution(rf,\
     \ fps_inv(rg));\n    q.resize(k);\n    reverse(q.begin(), q.end());\n    vector<T>\
     \ qg = convolution(q, g);\n    vector<T> r(f.begin(), f.begin() + m - 1);\n  \
     \  for (int i = 0; i < m - 1; ++i) r[i] -= qg[i];\n    poly_trim(q), poly_trim(r);\n\
     \    return {q, r};\n}\n"
   code: "#pragma once\n\n#include \"Polynomial/fps_inv.hpp\"\n#include \"Polynomial/helper.hpp\"\
-    \n\n// returns {q, r} with f = q g + r, deg r < deg g, both trimmed\ntemplate<typename\
-    \ T>\npair<vector<T>, vector<T>> poly_divmod(vector<T> f, vector<T> g) {\n   \
-    \ poly_trim(f), poly_trim(g);\n    assert(!g.empty());\n    int n = SZ(f), m =\
-    \ SZ(g);\n    if (n < m) return {vector<T>(), f};\n    // rev(q) = rev(f) / rev(g)\
-    \ mod x^(n - m + 1)\n    int k = n - m + 1;\n    vector<T> rf(f.rbegin(), f.rbegin()\
-    \ + k), rg(g.rbegin(), g.rend());\n    rg.resize(k);\n    vector<T> q = convolution(rf,\
+    \n\n// returns {q, r} with f = q g + r, deg r < deg g\ntemplate<typename T>\n\
+    pair<vector<T>, vector<T>> poly_divmod(vector<T> f, vector<T> g) {\n    poly_trim(f),\
+    \ poly_trim(g);\n    assert(!g.empty());\n    int n = SZ(f), m = SZ(g);\n    if\
+    \ (n < m) return {vector<T>(), f};\n    // rev(q) = rev(f) / rev(g) mod x^(n -\
+    \ m + 1)\n    int k = n - m + 1;\n    vector<T> rf(f.rbegin(), f.rbegin() + k),\
+    \ rg(g.rbegin(), g.rend());\n    rg.resize(k);\n    vector<T> q = convolution(rf,\
     \ fps_inv(rg));\n    q.resize(k);\n    reverse(q.begin(), q.end());\n    vector<T>\
     \ qg = convolution(q, g);\n    vector<T> r(f.begin(), f.begin() + m - 1);\n  \
     \  for (int i = 0; i < m - 1; ++i) r[i] -= qg[i];\n    poly_trim(q), poly_trim(r);\n\
@@ -237,10 +243,12 @@ data:
   - Polynomial/helper.hpp
   isVerificationFile: false
   path: Polynomial/divmod.hpp
-  requiredBy: []
-  timestamp: '2026-10-25 16:11:59+08:00'
+  requiredBy:
+  - Polynomial/bostan_mori.hpp
+  timestamp: '2026-10-26 15:25:53+08:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
+  - test/library_checker/kth_term_of_linearly_recurrent_sequence.test.cpp
   - test/library_checker/division_of_polynomials.test.cpp
 documentation_of: Polynomial/divmod.hpp
 layout: document

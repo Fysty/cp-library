@@ -24,9 +24,18 @@ data:
     title: Polynomial/fps_log.hpp
   _extendedRequiredBy:
   - icon: ':heavy_check_mark:'
+    path: Polynomial/compositional_inverse.hpp
+    title: Polynomial/compositional_inverse.hpp
+  - icon: ':heavy_check_mark:'
     path: Polynomial/fps_pow.hpp
     title: Polynomial/fps_pow.hpp
   _extendedVerifiedWith:
+  - icon: ':heavy_check_mark:'
+    path: test/library_checker/compositional_inverse_of_formal_power_series.test.cpp
+    title: test/library_checker/compositional_inverse_of_formal_power_series.test.cpp
+  - icon: ':heavy_check_mark:'
+    path: test/library_checker/compositional_inverse_of_formal_power_series_large.test.cpp
+    title: test/library_checker/compositional_inverse_of_formal_power_series_large.test.cpp
   - icon: ':heavy_check_mark:'
     path: test/library_checker/fps_exp.test.cpp
     title: test/library_checker/fps_exp.test.cpp
@@ -264,11 +273,14 @@ data:
   isVerificationFile: false
   path: Polynomial/fps_exp.hpp
   requiredBy:
+  - Polynomial/compositional_inverse.hpp
   - Polynomial/fps_pow.hpp
   timestamp: '2026-10-21 14:58:37+08:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
+  - test/library_checker/compositional_inverse_of_formal_power_series.test.cpp
   - test/library_checker/fps_pow.test.cpp
+  - test/library_checker/compositional_inverse_of_formal_power_series_large.test.cpp
   - test/library_checker/fps_exp.test.cpp
 documentation_of: Polynomial/fps_exp.hpp
 layout: document

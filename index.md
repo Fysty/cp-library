@@ -33,6 +33,9 @@ data:
       path: Polynomial/chirp_z.hpp
       title: Polynomial/chirp_z.hpp
     - icon: ':heavy_check_mark:'
+      path: Polynomial/compositional_inverse.hpp
+      title: Polynomial/compositional_inverse.hpp
+    - icon: ':heavy_check_mark:'
       path: Polynomial/convolution.hpp
       title: Polynomial/convolution.hpp
     - icon: ':heavy_check_mark:'
@@ -63,6 +66,9 @@ data:
       path: Polynomial/multipoint.hpp
       title: Polynomial/multipoint.hpp
     - icon: ':heavy_check_mark:'
+      path: Polynomial/power_projection.hpp
+      title: Polynomial/power_projection.hpp
+    - icon: ':heavy_check_mark:'
       path: Polynomial/product_of_polynomials.hpp
       title: Polynomial/product_of_polynomials.hpp
   - name: .
@@ -73,6 +79,12 @@ data:
   verificationCategories:
   - name: test/library_checker
     pages:
+    - icon: ':heavy_check_mark:'
+      path: test/library_checker/compositional_inverse_of_formal_power_series.test.cpp
+      title: test/library_checker/compositional_inverse_of_formal_power_series.test.cpp
+    - icon: ':heavy_check_mark:'
+      path: test/library_checker/compositional_inverse_of_formal_power_series_large.test.cpp
+      title: test/library_checker/compositional_inverse_of_formal_power_series_large.test.cpp
     - icon: ':heavy_check_mark:'
       path: test/library_checker/convolution.test.cpp
       title: test/library_checker/convolution.test.cpp

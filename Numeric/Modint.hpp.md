@@ -15,6 +15,9 @@ data:
     path: Polynomial/chirp_z.hpp
     title: Polynomial/chirp_z.hpp
   - icon: ':heavy_check_mark:'
+    path: Polynomial/compositional_inverse.hpp
+    title: Polynomial/compositional_inverse.hpp
+  - icon: ':heavy_check_mark:'
     path: Polynomial/convolution.hpp
     title: Polynomial/convolution.hpp
   - icon: ':heavy_check_mark:'
@@ -42,9 +45,18 @@ data:
     path: Polynomial/multipoint.hpp
     title: Polynomial/multipoint.hpp
   - icon: ':heavy_check_mark:'
+    path: Polynomial/power_projection.hpp
+    title: Polynomial/power_projection.hpp
+  - icon: ':heavy_check_mark:'
     path: Polynomial/product_of_polynomials.hpp
     title: Polynomial/product_of_polynomials.hpp
   _extendedVerifiedWith:
+  - icon: ':heavy_check_mark:'
+    path: test/library_checker/compositional_inverse_of_formal_power_series.test.cpp
+    title: test/library_checker/compositional_inverse_of_formal_power_series.test.cpp
+  - icon: ':heavy_check_mark:'
+    path: test/library_checker/compositional_inverse_of_formal_power_series_large.test.cpp
+    title: test/library_checker/compositional_inverse_of_formal_power_series_large.test.cpp
   - icon: ':heavy_check_mark:'
     path: test/library_checker/convolution.test.cpp
     title: test/library_checker/convolution.test.cpp
@@ -240,6 +252,7 @@ data:
   isVerificationFile: false
   path: Numeric/Modint.hpp
   requiredBy:
+  - Polynomial/compositional_inverse.hpp
   - Polynomial/convolution.hpp
   - Polynomial/NTT.hpp
   - Polynomial/multipoint.hpp
@@ -248,6 +261,7 @@ data:
   - Polynomial/divmod.hpp
   - Polynomial/fps_inv.hpp
   - Polynomial/bostan_mori.hpp
+  - Polynomial/power_projection.hpp
   - Polynomial/middle_product.hpp
   - Polynomial/fps_log.hpp
   - Polynomial/chirp_z.hpp
@@ -258,8 +272,10 @@ data:
   verifiedWith:
   - test/library_checker/product_of_polynomial_sequence.test.cpp
   - test/library_checker/fps_log.test.cpp
+  - test/library_checker/compositional_inverse_of_formal_power_series.test.cpp
   - test/library_checker/multipoint_evaluation.test.cpp
   - test/library_checker/fps_pow.test.cpp
+  - test/library_checker/compositional_inverse_of_formal_power_series_large.test.cpp
   - test/library_checker/polynomial_interpolation.test.cpp
   - test/library_checker/fps_inv.test.cpp
   - test/library_checker/convolution.test.cpp

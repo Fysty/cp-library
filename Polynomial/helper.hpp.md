@@ -3,12 +3,18 @@ data:
   _extendedDependsOn: []
   _extendedRequiredBy:
   - icon: ':heavy_check_mark:'
+    path: Polynomial/bostan_mori.hpp
+    title: Polynomial/bostan_mori.hpp
+  - icon: ':heavy_check_mark:'
     path: Polynomial/divmod.hpp
     title: Polynomial/divmod.hpp
   _extendedVerifiedWith:
   - icon: ':heavy_check_mark:'
     path: test/library_checker/division_of_polynomials.test.cpp
     title: test/library_checker/division_of_polynomials.test.cpp
+  - icon: ':heavy_check_mark:'
+    path: test/library_checker/kth_term_of_linearly_recurrent_sequence.test.cpp
+    title: test/library_checker/kth_term_of_linearly_recurrent_sequence.test.cpp
   _isVerificationFailed: false
   _pathExtension: hpp
   _verificationStatusIcon: ':heavy_check_mark:'
@@ -37,9 +43,11 @@ data:
   path: Polynomial/helper.hpp
   requiredBy:
   - Polynomial/divmod.hpp
+  - Polynomial/bostan_mori.hpp
   timestamp: '2026-10-25 16:11:59+08:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
+  - test/library_checker/kth_term_of_linearly_recurrent_sequence.test.cpp
   - test/library_checker/division_of_polynomials.test.cpp
 documentation_of: Polynomial/helper.hpp
 layout: document

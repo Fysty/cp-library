@@ -16,6 +16,15 @@ data:
   - icon: ':heavy_check_mark:'
     path: Polynomial/convolution.hpp
     title: Polynomial/convolution.hpp
+  - icon: ':heavy_check_mark:'
+    path: Polynomial/divmod.hpp
+    title: Polynomial/divmod.hpp
+  - icon: ':heavy_check_mark:'
+    path: Polynomial/fps_inv.hpp
+    title: Polynomial/fps_inv.hpp
+  - icon: ':heavy_check_mark:'
+    path: Polynomial/helper.hpp
+    title: Polynomial/helper.hpp
   _extendedRequiredBy: []
   _extendedVerifiedWith:
   - icon: ':heavy_check_mark:'
@@ -26,7 +35,8 @@ data:
   _verificationStatusIcon: ':heavy_check_mark:'
   attributes:
     links: []
-  bundledCode: "#line 2 \"Polynomial/bostan_mori.hpp\"\n\n#line 2 \"Polynomial/convolution.hpp\"\
+  bundledCode: "#line 2 \"Polynomial/bostan_mori.hpp\"\n\n#line 2 \"Polynomial/divmod.hpp\"\
+    \n\n#line 2 \"Polynomial/fps_inv.hpp\"\n\n#line 2 \"Polynomial/convolution.hpp\"\
     \n\n#line 2 \"Polynomial/NTT.hpp\"\n\n#line 2 \"Numeric/Modint.hpp\"\n\n// Reference:\
     \ Atcoder Library https://github.com/atcoder/ac-library\n#line 2 \"Numeric/internal_math.hpp\"\
     \n// Reference: Atcoder Library https://github.com/atcoder/ac-library\n\n#ifdef\
@@ -179,52 +189,89 @@ data:
     \ exceeds the support limit of the modulo\");\n    a.resize(n), b.resize(n);\n\
     \    NTT<T>::ntt(a), NTT<T>::ntt(b);\n    for (int i = 0; i < n; ++i)\n      \
     \  a[i] = a[i] * b[i];\n    NTT<T>::ntt(a, true);\n    a.resize(sz);\n    return\
-    \ a;\n}\n#line 4 \"Polynomial/bostan_mori.hpp\"\n\n// [x^k](f(x)/g(x)), [x^0]g\
-    \ != 0\ntemplate<typename T>\nT bostan_mori(const vector<T> &f, const vector<T>\
-    \ &g, long long k) {\n    assert(f.size() + 1 <= g.size() && g[0] != 0);\n   \
-    \ if (f.empty()) return T(0);\n    vector<T> F = f, G = g;\n    for(; k; k >>=\
-    \ 1) {\n        int m = 1;\n        while (m < SZ(G) * 2) m <<= 1;\n        int\
-    \ m2 = m >> 1;\n        F.resize(m), G.resize(m);\n        NTT<T>::ntt(F), NTT<T>::ntt(G);\n\
-    \        for (int i = 0; i < m; ++i) F[i] *= G[(i + m2) % m];\n        for (int\
-    \ i = 0; i < m2; ++i) {\n            int j = i + m2;\n            G[i] = G[j]\
-    \ = G[i] * G[j];\n        }\n        NTT<T>::ntt(F, true), NTT<T>::ntt(G, true);\n\
-    \        for (int i = 0; i * 2 + (k & 1) < SZ(F); ++i) F[i] = F[i * 2 + (k & 1)];\n\
-    \        for (int i = 0; i * 2 < SZ(G); ++i) G[i] = G[i * 2];\n        F.resize((SZ(F)\
-    \ + 1 - (k & 1)) / 2);\n        G.resize((SZ(G) + 1) / 2);\n    }\n    return\
-    \ F[0] / G[0];\n}\n\n// a_n = \\sum c_j a_(n-j-1)\ntemplate<typename T>\nT find_nth_of_linear_rec(const\
-    \ vector<T> &a, const vector<T> &coef, long long n) {\n    int d = SZ(coef);\n\
-    \    assert(SZ(a) == d);\n    if (n < d) return a[n];\n    vector<T> q(d + 1);\n\
-    \    q[0] = 1;\n    for (int j = 0; j < d; ++j) q[j + 1] = -coef[j];\n    vector<T>\
-    \ p = convolution(a, q);\n    p.resize(d);\n    return bostan_mori(p, q, n);\n\
-    }\n"
-  code: "#pragma once\n\n#include \"Polynomial/convolution.hpp\"\n\n// [x^k](f(x)/g(x)),\
+    \ a;\n}\n#line 4 \"Polynomial/fps_inv.hpp\"\n\ntemplate <typename T>\nvector<T>\
+    \ fps_inv(const vector<T>& F) {\n    assert(!F.empty() && F[0] != 0);\n    int\
+    \ n = (int)F.size();\n    assert((int)bit_ceil((unsigned)n) <= NTT<T>::ntt_max_limit\
+    \ && \"the result length exceeds the support limit of the modulo\");\n    vector<T>\
+    \ G = {F[0].inv()};\n    G.reserve(n);\n    int sz = 1;\n    while (sz < n) {\n\
+    \        vector<T> f(sz * 2), g(sz * 2);\n        for (int i = 0; i < min(n, sz\
+    \ * 2); i++) f[i] = F[i];\n        for (int i = 0; i < sz; i++) g[i] = G[i];\n\
+    \        NTT<T>::ntt(f), NTT<T>::ntt(g);\n        for (int i = 0; i < sz * 2;\
+    \ i++) f[i] *= g[i];\n        NTT<T>::ntt(f, true);\n        for (int i = 0; i\
+    \ < sz; i++) f[i] = 0;\n        NTT<T>::ntt(f);\n        for (int i = 0; i < sz\
+    \ * 2; i++) f[i] *= g[i];\n        NTT<T>::ntt(f, true);\n        for (int i =\
+    \ sz; i < min(n, sz * 2); i++) G.emplace_back(-f[i]);\n        sz *= 2;\n    }\n\
+    \    return G;\n}\n#line 2 \"Polynomial/helper.hpp\"\n\n// removes trailing zeros,\
+    \ the zero polynomial is empty\ntemplate<typename T>\nvoid poly_trim(vector<T>&\
+    \ f) {\n    while (!f.empty() && f.back() == 0) f.pop_back();\n}\n\n// returns\
+    \ a + b, trimmed\ntemplate<typename T>\nvector<T> poly_add(vector<T> a, const\
+    \ vector<T>& b) {\n    if (SZ(a) < SZ(b)) a.resize(SZ(b));\n    for (int i = 0;\
+    \ i < SZ(b); ++i) a[i] += b[i];\n    poly_trim(a);\n    return a;\n}\n\n// returns\
+    \ a / x^k, dropping the lowest k coefficients\ntemplate<typename T>\nvector<T>\
+    \ poly_shr(const vector<T>& a, int k) {\n    if (SZ(a) <= k) return vector<T>();\n\
+    \    return vector<T>(a.begin() + k, a.end());\n}\n#line 5 \"Polynomial/divmod.hpp\"\
+    \n\n// returns {q, r} with f = q g + r, deg r < deg g\ntemplate<typename T>\n\
+    pair<vector<T>, vector<T>> poly_divmod(vector<T> f, vector<T> g) {\n    poly_trim(f),\
+    \ poly_trim(g);\n    assert(!g.empty());\n    int n = SZ(f), m = SZ(g);\n    if\
+    \ (n < m) return {vector<T>(), f};\n    // rev(q) = rev(f) / rev(g) mod x^(n -\
+    \ m + 1)\n    int k = n - m + 1;\n    vector<T> rf(f.rbegin(), f.rbegin() + k),\
+    \ rg(g.rbegin(), g.rend());\n    rg.resize(k);\n    vector<T> q = convolution(rf,\
+    \ fps_inv(rg));\n    q.resize(k);\n    reverse(q.begin(), q.end());\n    vector<T>\
+    \ qg = convolution(q, g);\n    vector<T> r(f.begin(), f.begin() + m - 1);\n  \
+    \  for (int i = 0; i < m - 1; ++i) r[i] -= qg[i];\n    poly_trim(q), poly_trim(r);\n\
+    \    return {q, r};\n}\n#line 4 \"Polynomial/bostan_mori.hpp\"\n\n// [x^k](f(x)/g(x)),\
     \ [x^0]g != 0\ntemplate<typename T>\nT bostan_mori(const vector<T> &f, const vector<T>\
-    \ &g, long long k) {\n    assert(f.size() + 1 <= g.size() && g[0] != 0);\n   \
-    \ if (f.empty()) return T(0);\n    vector<T> F = f, G = g;\n    for(; k; k >>=\
-    \ 1) {\n        int m = 1;\n        while (m < SZ(G) * 2) m <<= 1;\n        int\
-    \ m2 = m >> 1;\n        F.resize(m), G.resize(m);\n        NTT<T>::ntt(F), NTT<T>::ntt(G);\n\
-    \        for (int i = 0; i < m; ++i) F[i] *= G[(i + m2) % m];\n        for (int\
-    \ i = 0; i < m2; ++i) {\n            int j = i + m2;\n            G[i] = G[j]\
-    \ = G[i] * G[j];\n        }\n        NTT<T>::ntt(F, true), NTT<T>::ntt(G, true);\n\
-    \        for (int i = 0; i * 2 + (k & 1) < SZ(F); ++i) F[i] = F[i * 2 + (k & 1)];\n\
-    \        for (int i = 0; i * 2 < SZ(G); ++i) G[i] = G[i * 2];\n        F.resize((SZ(F)\
-    \ + 1 - (k & 1)) / 2);\n        G.resize((SZ(G) + 1) / 2);\n    }\n    return\
-    \ F[0] / G[0];\n}\n\n// a_n = \\sum c_j a_(n-j-1)\ntemplate<typename T>\nT find_nth_of_linear_rec(const\
-    \ vector<T> &a, const vector<T> &coef, long long n) {\n    int d = SZ(coef);\n\
-    \    assert(SZ(a) == d);\n    if (n < d) return a[n];\n    vector<T> q(d + 1);\n\
-    \    q[0] = 1;\n    for (int j = 0; j < d; ++j) q[j + 1] = -coef[j];\n    vector<T>\
-    \ p = convolution(a, q);\n    p.resize(d);\n    return bostan_mori(p, q, n);\n\
-    }\n"
+    \ &g, long long k) {\n    assert(!g.empty() && g[0] != 0);\n    if (SZ(f) >= SZ(g))\
+    \ {\n        // f = qg + r, [x^k] f/g = [x^k] q + [x^k] r/g\n        auto [q,\
+    \ r] = poly_divmod(f, g);\n        return (k < SZ(q) ? q[k] : T(0)) + bostan_mori(r,\
+    \ g, k);\n    }\n    if (f.empty()) return T(0);\n    vector<T> F = f, G = g;\n\
+    \    for(; k; k >>= 1) {\n        int m = 1;\n        while (m < SZ(G) * 2) m\
+    \ <<= 1;\n        int m2 = m >> 1;\n        F.resize(m), G.resize(m);\n      \
+    \  NTT<T>::ntt(F), NTT<T>::ntt(G);\n        for (int i = 0; i < m; ++i) F[i] *=\
+    \ G[(i + m2) % m];\n        for (int i = 0; i < m2; ++i) {\n            int j\
+    \ = i + m2;\n            G[i] = G[j] = G[i] * G[j];\n        }\n        NTT<T>::ntt(F,\
+    \ true), NTT<T>::ntt(G, true);\n        for (int i = 0; i * 2 + (k & 1) < SZ(F);\
+    \ ++i) F[i] = F[i * 2 + (k & 1)];\n        for (int i = 0; i * 2 < SZ(G); ++i)\
+    \ G[i] = G[i * 2];\n        F.resize((SZ(F) + 1 - (k & 1)) / 2);\n        G.resize((SZ(G)\
+    \ + 1) / 2);\n    }\n    return F[0] / G[0];\n}\n\n// a_n = \\sum c_j a_(n-j-1)\n\
+    template<typename T>\nT find_nth_of_linear_rec(const vector<T> &a, const vector<T>\
+    \ &coef, long long n) {\n    int d = SZ(coef);\n    assert(SZ(a) == d);\n    if\
+    \ (n < d) return a[n];\n    vector<T> q(d + 1);\n    q[0] = 1;\n    for (int j\
+    \ = 0; j < d; ++j) q[j + 1] = -coef[j];\n    vector<T> p = convolution(a, q);\n\
+    \    p.resize(d);\n    return bostan_mori(p, q, n);\n}\n"
+  code: "#pragma once\n\n#include \"Polynomial/divmod.hpp\"\n\n// [x^k](f(x)/g(x)),\
+    \ [x^0]g != 0\ntemplate<typename T>\nT bostan_mori(const vector<T> &f, const vector<T>\
+    \ &g, long long k) {\n    assert(!g.empty() && g[0] != 0);\n    if (SZ(f) >= SZ(g))\
+    \ {\n        // f = qg + r, [x^k] f/g = [x^k] q + [x^k] r/g\n        auto [q,\
+    \ r] = poly_divmod(f, g);\n        return (k < SZ(q) ? q[k] : T(0)) + bostan_mori(r,\
+    \ g, k);\n    }\n    if (f.empty()) return T(0);\n    vector<T> F = f, G = g;\n\
+    \    for(; k; k >>= 1) {\n        int m = 1;\n        while (m < SZ(G) * 2) m\
+    \ <<= 1;\n        int m2 = m >> 1;\n        F.resize(m), G.resize(m);\n      \
+    \  NTT<T>::ntt(F), NTT<T>::ntt(G);\n        for (int i = 0; i < m; ++i) F[i] *=\
+    \ G[(i + m2) % m];\n        for (int i = 0; i < m2; ++i) {\n            int j\
+    \ = i + m2;\n            G[i] = G[j] = G[i] * G[j];\n        }\n        NTT<T>::ntt(F,\
+    \ true), NTT<T>::ntt(G, true);\n        for (int i = 0; i * 2 + (k & 1) < SZ(F);\
+    \ ++i) F[i] = F[i * 2 + (k & 1)];\n        for (int i = 0; i * 2 < SZ(G); ++i)\
+    \ G[i] = G[i * 2];\n        F.resize((SZ(F) + 1 - (k & 1)) / 2);\n        G.resize((SZ(G)\
+    \ + 1) / 2);\n    }\n    return F[0] / G[0];\n}\n\n// a_n = \\sum c_j a_(n-j-1)\n\
+    template<typename T>\nT find_nth_of_linear_rec(const vector<T> &a, const vector<T>\
+    \ &coef, long long n) {\n    int d = SZ(coef);\n    assert(SZ(a) == d);\n    if\
+    \ (n < d) return a[n];\n    vector<T> q(d + 1);\n    q[0] = 1;\n    for (int j\
+    \ = 0; j < d; ++j) q[j + 1] = -coef[j];\n    vector<T> p = convolution(a, q);\n\
+    \    p.resize(d);\n    return bostan_mori(p, q, n);\n}\n"
   dependsOn:
+  - Polynomial/divmod.hpp
+  - Polynomial/fps_inv.hpp
   - Polynomial/convolution.hpp
   - Polynomial/NTT.hpp
   - Numeric/Modint.hpp
   - Numeric/internal_math.hpp
   - Numeric/internal_primitive_root.hpp
+  - Polynomial/helper.hpp
   isVerificationFile: false
   path: Polynomial/bostan_mori.hpp
   requiredBy: []
-  timestamp: '2026-10-23 16:43:14+08:00'
+  timestamp: '2026-10-26 15:25:53+08:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
   - test/library_checker/kth_term_of_linearly_recurrent_sequence.test.cpp
