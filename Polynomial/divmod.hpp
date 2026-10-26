@@ -3,7 +3,7 @@
 #include "Polynomial/fps_inv.hpp"
 #include "Polynomial/helper.hpp"
 
-// returns {q, r} with f = q g + r, deg r < deg g, both trimmed
+// returns {q, r} with f = q g + r, deg r < deg g
 template<typename T>
 pair<vector<T>, vector<T>> poly_divmod(vector<T> f, vector<T> g) {
     poly_trim(f), poly_trim(g);

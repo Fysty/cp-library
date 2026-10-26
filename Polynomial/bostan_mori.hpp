@@ -1,11 +1,16 @@
 #pragma once
 
-#include "Polynomial/convolution.hpp"
+#include "Polynomial/divmod.hpp"
 
 // [x^k](f(x)/g(x)), [x^0]g != 0
 template<typename T>
 T bostan_mori(const vector<T> &f, const vector<T> &g, long long k) {
-    assert(f.size() + 1 <= g.size() && g[0] != 0);
+    assert(!g.empty() && g[0] != 0);
+    if (SZ(f) >= SZ(g)) {
+        // f = qg + r, [x^k] f/g = [x^k] q + [x^k] r/g
+        auto [q, r] = poly_divmod(f, g);
+        return (k < SZ(q) ? q[k] : T(0)) + bostan_mori(r, g, k);
+    }
     if (f.empty()) return T(0);
     vector<T> F = f, G = g;
     for(; k; k >>= 1) {
